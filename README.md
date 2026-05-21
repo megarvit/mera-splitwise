@@ -22,6 +22,16 @@ Also, I tried to make this ReadMe as crisp as possible. So do let me know If any
 - Activity logs for expense actions
 - Balance calculation for user debts and credits
 
+## Project structure
+
+- `src/server.js` - app entrypoint
+- `src/config/database.js` - Sequelize/SQLite config
+- `src/routes/` - Express route definitions
+- `src/controllers/` - request handlers
+- `src/models/` - Sequelize models
+- `src/services/` - balance calculation logic
+- `src/middleware/authMiddleware.js` - JWT auth middleware
+
 ## Getting started
 
 ### Prerequisites
