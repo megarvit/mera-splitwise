@@ -4,8 +4,6 @@ import {
     ActivityLog
 } from "../models/index.js";
 
-import { calculateBalances } from "../services/balanceService.js";
-
 
 // CREATE EXPENSE
 export const addExpense = async (req, res) => {
@@ -258,20 +256,6 @@ export const deleteExpense = async (req, res) => {
         res.json({
             message: "Expense deleted successfully"
         });
-
-    } catch (error) {
-        res.status(500).json({
-            error: error.message
-        });
-    }
-};
-
-
-// GET BALANCES
-export const getBalances = async (req, res) => {
-    try {
-        const balances = await calculateBalances();
-        res.json(balances);
 
     } catch (error) {
         res.status(500).json({

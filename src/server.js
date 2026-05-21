@@ -8,6 +8,7 @@ import userRoutes from "./routes/userRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import expenseRoutes from "./routes/expenseRoutes.js";
 import activityRoutes from "./routes/activityRoutes.js";
+import balanceRoutes from "./routes/balanceRoutes.js";
 
 const app = express();
 
@@ -19,7 +20,7 @@ app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/expenses", expenseRoutes);
 app.use("/activities", activityRoutes);
-
+app.use("/balances", balanceRoutes);
 
 const PORT = 3000;
 
