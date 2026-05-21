@@ -81,25 +81,71 @@ export const getExpenseById = async (req, res) => {
 
 
 // UPDATE EXPENSE
-export const updateExpense = async (req, res) => {
+// export const updateExpense = async (req, res) => {
+//     try {
+//         const { id } = req.params;
+//         const { description, amount } = req.body;
+//         const expense = await Expense.findByPk(id);
+
+//         if (!expense) {
+//             return res.status(404).json({
+//                 message: "Expense not found"
+//             });
+//         }
+
+//         await expense.update({
+//             description,
+//             amount
+//         });
+//         res.json(expense);
+
+//     } catch (error) {
+//         res.status(500).json({
+//             error: error.message
+//         });
+//     }
+// };
+
+//UPDATE EXPENSE LOGIC
+export const updateExpense = async (req,res) => {
     try {
         const { id } = req.params;
-        const { description, amount } = req.body;
+        const {description, amount, paidBy, participants} = req.body;
+
         const expense = await Expense.findByPk(id);
 
-        if (!expense) {
+        if(!expense){
             return res.status(404).json({
                 message: "Expense not found"
             });
         }
 
+        // updating the expense table
         await expense.update({
             description,
-            amount
+            amount,
+            paidBy
         });
-        res.json(expense);
 
-    } catch (error) {
+        // delete old participants
+        await ExpenseParticipant.destroy({
+            where: {
+                expenseId: id
+            }
+        });
+
+        // add new participants
+        const share = amount / participants.length;
+        for(const userId of participants){
+            await ExpenseParticipant.create({
+                expenseId: id,
+                userId,
+                share
+            });
+        }
+
+        res.json(expense);
+    }   catch (error) {
         res.status(500).json({
             error: error.message
         });

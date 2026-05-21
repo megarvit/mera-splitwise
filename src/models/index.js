@@ -1,6 +1,6 @@
-import User from "./User.js";
-import Expense from "./Expense.js";
-import ExpenseParticipant from "./ExpenseParticipant.js";
+import User from "./user.js";
+import Expense from "./expense.js";
+import ExpenseParticipant from "./expenseParticipant.js";
 
 
 // One user can pay many expenses
