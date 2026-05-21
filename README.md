@@ -1,7 +1,8 @@
 # Mera Splitwise
 
 A simple expense sharing API built with Express, Sequelize, and SQLite.
-This project provides user authentication, expense creation, participant tracking, activity logs, and balance calculation.
+I have done user authentication, expense creation, participant tracking, activity logs, and balance calculation.
+Also, I tried to make this ReadMe as crisp as possible. So do let me know If any briefing is needed ;)
 
 ## Tech stack
 
@@ -43,7 +44,7 @@ npm run dev
 The app listens on `http://localhost:3000` by default.
 
 ## Environment
-
+(Not necessary)
 Create a `.env` file in the project root to override the default JWT secret:
 
 ```env
@@ -64,7 +65,7 @@ If `JWT_SECRET` is not provided, the app defaults to `splitwise_secret`.
   - Body: `{ "email": string, "password": string }`
   - Response: user details + JWT token
 
-### User profile (authenticated)
+### User profile
 
 - `GET /users/profile`
   - Returns the current user's profile
@@ -76,7 +77,7 @@ If `JWT_SECRET` is not provided, the app defaults to `splitwise_secret`.
 - `DELETE /users/profile`
   - Deletes the current authenticated user
 
-### Expenses (authenticated)
+### Expenses
 
 - `POST /expenses`
   - Body:
@@ -105,14 +106,14 @@ If `JWT_SECRET` is not provided, the app defaults to `splitwise_secret`.
 - `DELETE /expenses/:id`
   - Deletes the expense and related participants
 
-### Balances (authenticated)
+### Balances
 
 - `GET /balances`
   - Returns calculated balances for the authenticated user:
     - `GET_BACK` when others owe the user
     - `YOU_OWE` when the user owes others
 
-### Activities (authenticated)
+### Activities
 
 - `GET /activities`
   - Returns recent activity logs for expenses involving the authenticated user
