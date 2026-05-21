@@ -2,7 +2,7 @@
 
 A simple expense sharing API built with Express, Sequelize, and SQLite.
 I have done user authentication, expense creation, participant tracking, activity logs, and balance calculation.
-Also, I tried to make this ReadMe as crisp as possible. So do let me know If any briefing is needed ;)
+Also, I have tried to make this ReadMe as crisp as possible. So do let me know If any briefing is needed ;)
 
 ## Tech stack
 
