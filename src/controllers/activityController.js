@@ -55,9 +55,25 @@ export const getActivitiesByDateRange = async (req, res) => {
         const activities = await ActivityLog.findAll({
             where: {
                 createdAt: {
-                    [Op.between]: [new Date(startDate), new Date(endDate)]
+                    [Op.between]: [
+                        new Date(startDate),
+                        new Date(endDate)
+                    ]
                 }
             },
+            include: [
+                {
+                    model: Expense,
+                    include: [
+                        {
+                            model: ExpenseParticipant,
+                            where: {
+                                userId: req.user.userId
+                            }
+                        }
+                    ]
+                }
+            ]
         });
 
         const formattedActivities = activities.map(activity => ({
