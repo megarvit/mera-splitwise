@@ -234,7 +234,7 @@ export const deleteExpense = async (req, res) => {
 
         if(expense.createdBy !== req.user.userId){
             return res.status(403).json({
-                message: "You are not authorized to update this expense"
+                message: "You are not authorized to delete this expense"
             });
         }
 
