@@ -9,14 +9,16 @@ import {
     getBalances
 } from "../controllers/expenseController.js";
 
+import { authenticateUser } from "../middleware/authMiddleware.js";
+
 const router = express.Router();
 
-router.post("/", addExpense);
-router.get("/", getAllExpenses);
-router.get("/balances", getBalances);
+router.post("/", authenticateUser, addExpense);
+router.get("/", authenticateUser, getAllExpenses);
+router.get("/balances", authenticateUser, getBalances);
 
-router.get("/:id", getExpenseById);
-router.put("/:id", updateExpense);
-router.delete("/:id", deleteExpense);
+router.get("/:id", authenticateUser, getExpenseById);
+router.put("/:id", authenticateUser, updateExpense);
+router.delete("/:id", authenticateUser, deleteExpense);
 
 export default router;

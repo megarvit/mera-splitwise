@@ -19,9 +19,26 @@ const Expense = sequelize.define("Expense", {
         allowNull: false
     },
 
+    currency: {
+        type : DataTypes.STRING,
+        allowNull: false,
+        defaultValue: "INR"
+    },
+
     paidBy: {
         type: DataTypes.INTEGER,
         allowNull: false
+    },
+
+    createdBy: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+
+    expenseDate: {
+        type: DataTypes.DATE,
+        allowNull: true,
+        defaultValue: DataTypes.NOW
     }
 
 });

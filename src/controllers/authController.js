@@ -30,7 +30,7 @@ export const signup = async (req, res) => {
         }
 
         // hash password
-        const hashedPassword = await bycrypt.hash(password,10);
+        const hashedPassword = await bcrypt.hash(password,10);
 
         // create a user
         const user = await User.create({
@@ -76,7 +76,7 @@ export const login = async (req, res) => {
         }
         
         // check password is correct or not
-        const isPasswordCorrect = await bycrypt.compare(password, user.password);
+        const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
         if(!isPasswordCorrect) {
             return res.status(400).json({ message : "Invalid credentials"});

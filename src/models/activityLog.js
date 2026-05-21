@@ -1,9 +1,9 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/database.js";
 
-const ExpenseParticipant = sequelize.define("ExpenseParticipant", {
+const ActivityLog = sequelize.define("ActivityLog", {
 
-    id: {
+    activityId: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
@@ -19,11 +19,11 @@ const ExpenseParticipant = sequelize.define("ExpenseParticipant", {
         allowNull: false
     },
 
-    amountOwed: {
-        type: DataTypes.FLOAT,
+    action: {
+        type: DataTypes.STRING,
         allowNull: false
     }
 
 });
 
-export default ExpenseParticipant;
+export default ActivityLog;
